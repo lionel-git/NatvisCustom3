@@ -27,16 +27,18 @@ int DMYToExcelSerialDate(int nDay, int nMonth, int nYear)
         nDay - 2415019 - 32075;
 }
 
-
-class ExcelDate
+namespace E
 {
-public:
-    ExcelDate(int n) { value_ = n; }
+    class ExcelDate
+    {
+    public:
+        ExcelDate(int n) { value_ = n; }
 
-public:
-    
-    int value_;
-};
+    public:
+
+        int value_;
+    };
+}
 
 class Conversion
 {
@@ -90,21 +92,33 @@ void test()
     }
 }
 
+class MyData
+{
+public:
+    MyData(double d) { value_ = d; }
+
+    double value_;
+};
+
 int main(int argc, char** argv)
 {
     std::cout << "Hello world" << std::endl;
-    ExcelDate d1(43638);  // 2019 - 06 - 22
-    ExcelDate d2(41455);  // 2013 - 06 - 30
-    ExcelDate d3(32577);  // 1989 - 03 - 10
-    ExcelDate d4(43666);  // 2019 - 07 - 20
-    ExcelDate d5(47321);  // 2029 - 07 - 22
+    E::ExcelDate d1(43638);  // 2019 - 06 - 22
+    E::ExcelDate d2(41455);  // 2013 - 06 - 30
+    E::ExcelDate d3(32577);  // 1989 - 03 - 10
+    E::ExcelDate d4(43666);  // 2019 - 07 - 20
+    E::ExcelDate d5(47321);  // 2029 - 07 - 22
 
     ExcelDate2 z2(43638);
     std::cout << z2.to_string() << std::endl;
 
-    std::vector<ExcelDate> v;
+    std::vector<E::ExcelDate> v;
     for (int i = 0; i < 1000; ++i)
-        v.push_back(ExcelDate(43638 + i));
+        v.push_back(E::ExcelDate(43638 + i));
+
+    MyData drange(42000.0);
+    MyData dinf(40000.0);
+    MyData dsup(60000.0);
 
     test(); return 0;
 

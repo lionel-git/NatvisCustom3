@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
     <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
         
-        <Type Name="ExcelDate">
+        <Type Name="E::ExcelDate">
             <Intrinsic Name="e0" Expression="value_ + 68569 + 2415019"/>
             <Intrinsic Name="n"  Expression="int(( 4 * e0() ) / 146097)"/>
             <Intrinsic Name="e1"  Expression="e0() - int(( 146097 * n() + 3 ) / 4)"/>
@@ -19,6 +19,11 @@
             <DisplayString>{to_string(value_)}</DisplayString>
         </Type>
 
+        <Type Name="MyData">
+            <Intrinsic Name="e0" Expression="value_ + 68569 + 2415019"/>
+            <DisplayString Condition="value_ &gt; 41000 &amp;&amp; value_ &lt; 49000">value={e0()}</DisplayString>
+            <DisplayString>{value_}</DisplayString>
+        </Type>
 
     </AutoVisualizer>
 
