@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+        <Type Name="ExcelDate">
+            <Intrinsic Name="l0" Expression="value_ + 68569 + 2415019"/>
+            <Intrinsic Name="n"  Expression="int(( 4 * l0() ) / 146097)"/>
+            <Intrinsic Name="l1"  Expression="l0() - int(( 146097 * n() + 3 ) / 4)"/>
+            <Intrinsic Name="i"  Expression="int(( 4000 * ( l1() + 1 ) ) / 1461001)"/>
+            <Intrinsic Name="l2"  Expression="l1() - int(( 1461 * i() ) / 4) + 31"/>
+            <Intrinsic Name="j"  Expression="int(( 80 * l2() ) / 2447)"/>
+            <Intrinsic Name="day"  Expression="l2() - int(( 2447 * j() ) / 80)"/>
+            <Intrinsic Name="l3"  Expression="int(j() / 11)"/>
+            <Intrinsic Name="month"  Expression="j() + 2 - ( 12 * l3() )"/>
+            <Intrinsic Name="year"  Expression="100 * ( n() - 49 ) + i() + l3()"/>
+            <DisplayString>jul={value_} date={year()}/{month()}/{day()}</DisplayString>
+        </Type>
+</AutoVisualizer>
+
+<!--
+// Modified Julian to DMY calculation with an addition of 2415019
+    int l  = nSerialDate + 68569 + 2415019;
+    int n  = int(( 4 * l ) / 146097);
+    l      = l - int(( 146097 * n + 3 ) / 4);
+    int i  = int(( 4000 * ( l + 1 ) ) / 1461001);
+    l      = l - int(( 1461 * i ) / 4) + 31;
+    int j  = int(( 80 * l ) / 2447);
+    nDay   = l - int(( 2447 * j ) / 80);
+    l      = int(j / 11);
+    nMonth = j + 2 - ( 12 * l );
+    nYear  = 100 * ( n - 49 ) + i + l;
+-->
