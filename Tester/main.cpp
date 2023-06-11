@@ -1,4 +1,6 @@
 #include <iostream>
+#include <format>
+#include <vector>
 
 // Cf: https://stackoverflow.com/questions/56717088/algorithm-for-converting-serial-date-excel-to-year-month-day-in-c
 void ExcelSerialDateToDMY(int nSerialDate, int& nDay, int& nMonth, int& nYear)
@@ -25,13 +27,43 @@ int DMYToExcelSerialDate(int nDay, int nMonth, int nYear)
         nDay - 2415019 - 32075;
 }
 
+
 class ExcelDate
 {
 public:
     ExcelDate(int n) { value_ = n; }
 
+public:
+    
     int value_;
 };
+
+class Conversion
+{
+public:
+   
+
+    static std::string to_string(int value)
+    {
+        int day, month, year;
+        ExcelSerialDateToDMY(value, day, month, year);
+        return std::format("{}/{}/{}", year, month, day);
+    }
+
+};
+
+class ExcelDate2
+{
+public:
+    ExcelDate2(int n) { value_ = n; }
+
+    std::string to_string() { return Conversion::to_string(value_); }
+
+public:
+
+    int value_;
+};
+
 
 class MyClass
 {
@@ -67,7 +99,16 @@ int main(int argc, char** argv)
     ExcelDate d4(43666);  // 2019 - 07 - 20
     ExcelDate d5(47321);  // 2029 - 07 - 22
 
+    ExcelDate2 z2(43638);
+    std::cout << z2.to_string() << std::endl;
+
+    std::vector<ExcelDate> v;
+    for (int i = 0; i < 1000; ++i)
+        v.push_back(ExcelDate(43638 + i));
+
     test(); return 0;
+
+
 
     MyClass c1;
     std::cout << c1.getValue() << std::endl;
