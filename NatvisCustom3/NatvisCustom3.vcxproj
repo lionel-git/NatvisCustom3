@@ -111,7 +111,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(TargetPath) $(ProjectDir)..\Tester</Command>
+      <Command>copy $(TargetPath) "C:\Users\lione\OneDrive\Documents\Visual Studio 2022\Visualizers"
+copy $(ProjectDir)\NatvisCustom3.natvis "C:\Users\lione\OneDrive\Documents\Visual Studio 2022\Visualizers"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -131,11 +133,16 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(TargetPath) $(ProjectDir)..\Tester</Command>
+      <Command>copy $(TargetPath) "C:\Users\lione\OneDrive\Documents\Visual Studio 2022\Visualizers"
+copy $(ProjectDir)\NatvisCustom3.natvis "C:\Users\lione\OneDrive\Documents\Visual Studio 2022\Visualizers"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="natvis_main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="NatvisCustom3.natvis" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

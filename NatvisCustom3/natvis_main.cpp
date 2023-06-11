@@ -53,6 +53,12 @@ const T& getValue(void* c, long long offset)
 // Cf: https://learn.microsoft.com/en-us/visualstudio/debugger/visual-cpp-custom-visualizer-compatibility?view=vs-2022
 // Pour debugger dans  Tools > Options > Debugging : output windows : natvis diagnostic message: verbose
 // To check: https://github.com/microsoft/ConcordExtensibilitySamples
+
+// On peut mettre les DEUX fichiers (natvis + dll) dans les répertoires suivants:
+//%VSINSTALLDIR%\Common7\Packages\Debugger\Visualizers (requires admin access)
+//%USERPROFILE%\My Documents\Visual Studio 2012\Visualizers\
+//VS extension folders
+
 ADDIN_API HRESULT MyClassFormatter(DWORD dwAddress, DEBUGHELPER* pHelper, int nBase, BOOL bUniStrings, char* pResult, size_t max, DWORD reserved)
 {
     static bool init = false;
