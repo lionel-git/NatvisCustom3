@@ -52,6 +52,7 @@ const T& getValue(void* c, long long offset)
 // Tools > Options > Debugging, and then deselecting Load debug symbols in external process (native only).
 // Cf: https://learn.microsoft.com/en-us/visualstudio/debugger/visual-cpp-custom-visualizer-compatibility?view=vs-2022
 // Pour debugger dans  Tools > Options > Debugging : output windows : natvis diagnostic message: verbose
+// To check: https://github.com/microsoft/ConcordExtensibilitySamples
 ADDIN_API HRESULT MyClassFormatter(DWORD dwAddress, DEBUGHELPER* pHelper, int nBase, BOOL bUniStrings, char* pResult, size_t max, DWORD reserved)
 {
     static bool init = false;
